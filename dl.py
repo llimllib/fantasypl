@@ -1,4 +1,4 @@
-import requests, cPickle
+import requests, cPickle, shutil, time
 
 all = {}
 errorout = open("errors.log", "w")
@@ -17,5 +17,9 @@ for i in range(600):
         print "failed parsing player %s" % i
         errorout.write("Failed to parse player %s: %s\n" % (i, r.content))
 
-fout = open("players.data.pickle", 'w')
-cPickle.dump(all, fout)
+t = str(time.time()).split(".")[0]
+rawfile = "raw/players.%s.pickle" % t
+with file(rawfile, 'w') as outfile:
+    cPickle.dump(all, outfile)
+
+shutil.copy2(rawfile, "players.data.pickle")
