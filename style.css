@@ -14,7 +14,7 @@
   color: #498AF3;
   font-size: 250%;
   font-weight:bold;
-  line-height: 1.2; 
+  line-height: 1.2;
   margin: 10px 50px 10px;
   }
 
@@ -23,7 +23,7 @@
   color: #386BBC;
   font-size: 180%;
   font-weight:bold;
-  line-height: 1.2; 
+  line-height: 1.2;
   margin: 20px 50px 20px;
   }
 
@@ -48,7 +48,7 @@
 
 
 .rendered_html h2
-{ 
+{
   color: #386BBC;
   line-height: 1.2;
   margin: 1.1em 0em 0.5em;
@@ -56,14 +56,13 @@
   }
 
 .rendered_html h3
-{ 
-  font-size: 100%;
+{
   line-height: 1.2;
-  margin: 1.1em 0em 0.5em;
+  margin: 2.1em 0em 1.1em;
   }
 
 .rendered_html h4
-{ 
+{
   font-size: 100%;
   line-height: 1.4;
   margin: 1.1em 0em 0.5em;
