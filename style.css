@@ -1,5 +1,7 @@
 <style>
 
+/* https://github.com/ipython/ipython/issues/4248 */
+.reveal h4 .roll { line-height: 1.5; }
 .rendered_html
 {
   color: #2C5494;
