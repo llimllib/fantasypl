@@ -1933,7 +1933,7 @@ In&nbsp;[63]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[12]:
+In&nbsp;[5]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">cPickle</span>
@@ -1949,7 +1949,7 @@ In&nbsp;[12]:
 
 
 <div class="hbox output_area"><div class="prompt output_prompt">
-    Out[12]:</div>
+    Out[5]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 
 
@@ -2535,7 +2535,7 @@ In&nbsp;[12]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[24]:
+In&nbsp;[6]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="o">%</span><span class="k">matplotlib</span> <span class="n">inline</span>
@@ -2558,7 +2558,7 @@ In&nbsp;[24]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[23]:
+In&nbsp;[7]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">points</span> <span class="o">=</span> <span class="p">{}</span>
@@ -2586,6 +2586,16 @@ In&nbsp;[23]:
 <div class="vbox output_wrapper">
 <div class="output vbox">
 
+
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_stream output_stderr">
+<pre>
+/usr/local/Cellar/python/2.7.6/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/matplotlib/figure.py:371: UserWarning: matplotlib is currently using a non-GUI backend, so cannot show the figure
+  &quot;matplotlib is currently using a non-GUI backend, &quot;
+
+</pre>
+</div>
+</div>
 
 <div class="hbox output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_display_data">
@@ -2964,7 +2974,7 @@ KryZQURERERERERJhTcziIiIiIiIiCip/A/jDx2tVY3SrgAAAABJRU5ErkJggg==
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[22]:
+In&nbsp;[8]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">opponents</span> <span class="o">=</span> <span class="p">{}</span>
@@ -3611,7 +3621,7 @@ RU5ErkJggg==
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[26]:
+In&nbsp;[9]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="k">class</span> <span class="nc">Game</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -3713,7 +3723,7 @@ In&nbsp;[26]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[147]:
+In&nbsp;[10]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">p</span> <span class="o">=</span> <span class="n">find_player</span><span class="p">(</span><span class="s">&#39;Van Persie&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
@@ -3765,7 +3775,7 @@ Forward
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[27]:
+In&nbsp;[11]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">homeaway</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;A&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&quot;H&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
@@ -3997,7 +4007,7 @@ Kg4ck4oDx6TiwDGpOHBMKg4ck4oDx6T6P9HGNPmcBWdpAAAAAElFTkSuQmCC
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[36]:
+In&nbsp;[15]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">adjusted_score</span><span class="p">(</span><span class="n">game</span><span class="p">):</span>
@@ -4023,10 +4033,9 @@ In&nbsp;[36]:
         <span class="n">ev</span> <span class="o">+=</span> <span class="n">av</span> <span class="o">+</span> <span class="n">game_value</span><span class="p">(</span><span class="n">game</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">ev</span><span class="o">/</span><span class="n">n</span>
 
-<span class="k">print</span> <span class="n">expected_points</span><span class="p">(</span><span class="n">find_player</span><span class="p">(</span><span class="s">u&quot;Özil&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">print</span> <span class="n">expected_points</span><span class="p">(</span><span class="n">find_player</span><span class="p">(</span><span class="s">u&quot;Mutch&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
 <span class="k">print</span> <span class="n">expected_points</span><span class="p">(</span><span class="n">find_player</span><span class="p">(</span><span class="s">u&quot;Suárez&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
-<span class="k">print</span> <span class="n">expected_points</span><span class="p">(</span><span class="n">find_player</span><span class="p">(</span><span class="s">u&quot;Yaya Touré&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
-<span class="k">print</span> <span class="n">find_player</span><span class="p">(</span><span class="s">&quot;Rooney&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">expected_points</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">expected_points</span><span class="p">(</span><span class="n">find_player</span><span class="p">(</span><span class="s">u&quot;Sanogo&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -4039,10 +4048,9 @@ In&nbsp;[36]:
 <div class="hbox output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
-5.00089370373
+3.41602554986
 8.14701669057
-6.40384359526
-4.93353309248
+-0.131252429959
 
 </pre>
 </div>
@@ -4056,7 +4064,7 @@ In&nbsp;[36]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[52]:
+In&nbsp;[16]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="c"># re-create our player objects, this time with our monkey-patched expected points function.</span>
@@ -4075,7 +4083,7 @@ In&nbsp;[52]:
 
 
 <div class="hbox output_area"><div class="prompt output_prompt">
-    Out[52]:</div>
+    Out[16]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 
 
@@ -4189,7 +4197,7 @@ bin gk1, mf2, d3, f4, d5, ....;       /* all variables are binary */
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[53]:
+In&nbsp;[17]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">objective_function</span><span class="p">():</span>
@@ -4214,7 +4222,7 @@ In&nbsp;[53]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[44]:
+In&nbsp;[18]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">cost_constraint</span><span class="p">(</span><span class="n">max_price</span><span class="p">):</span>
@@ -4238,7 +4246,7 @@ In&nbsp;[44]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[45]:
+In&nbsp;[19]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">position_constraints</span><span class="p">():</span>
@@ -4271,7 +4279,7 @@ In&nbsp;[45]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[57]:
+In&nbsp;[20]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="c">#create a buffer to hold all the constraints</span>
@@ -4306,12 +4314,12 @@ In&nbsp;[57]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[58]:
+In&nbsp;[24]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">subprocess</span><span class="o">,</span> <span class="nn">re</span>
 
-<span class="k">def</span> <span class="nf">get_id</span><span class="p">(</span><span class="n">idn</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">get_player</span><span class="p">(</span><span class="n">idn</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;given an id, return a player&quot;&quot;&quot;</span>
     <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">player_objs</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">idn</span> <span class="o">==</span> <span class="n">idn</span><span class="p">:</span> <span class="k">return</span> <span class="n">p</span>
@@ -4319,9 +4327,11 @@ In&nbsp;[58]:
     
 <span class="k">def</span> <span class="nf">return_team</span><span class="p">(</span><span class="n">lp</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;run lp_solve on the file lp. return a list of player objects&quot;&quot;&quot;</span>
-    <span class="n">val</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">(</span><span class="s">&quot;echo &#39;</span><span class="si">%s</span><span class="s">&#39; | lp_solve&quot;</span> <span class="o">%</span> <span class="n">lp</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
-    <span class="n">team_ids</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">&quot;^\w+?(\d+)&quot;</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">val</span> <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r&quot; 1$&quot;</span><span class="p">,</span> <span class="n">l</span><span class="p">)]</span>
-    <span class="k">return</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">get_id</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="n">team_ids</span><span class="p">)</span>
+    <span class="n">cmd</span> <span class="o">=</span> <span class="s">&quot;echo &#39;</span><span class="si">%s</span><span class="s">&#39; | lp_solve&quot;</span> <span class="o">%</span> <span class="n">lp</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+    <span class="n">get_id</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">l</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">&quot;^\w+?(\d+)&quot;</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">team_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">get_id</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">val</span> <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r&quot; 1$&quot;</span><span class="p">,</span> <span class="n">l</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="nb">map</span><span class="p">(</span><span class="n">get_player</span><span class="p">,</span> <span class="n">team_ids</span><span class="p">)</span>
 
 <span class="n">return_team</span><span class="p">(</span><span class="n">buf</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
 </pre></div>
@@ -4334,7 +4344,7 @@ In&nbsp;[58]:
 
 
 <div class="hbox output_area"><div class="prompt output_prompt">
-    Out[58]:</div>
+    Out[24]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 
 
@@ -4365,8 +4375,7 @@ In&nbsp;[58]:
 </div><aside class="notes">
     
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>So you write code to generate the lp_solve file described above, run it through the lp_solve, and success! A valid team pops out the other end.</p>
-<p>You've now written code to pick a fantasy football team. There are a million improvements you imagine you could make to your model... but you're already a few hours in and think it might be time to wrap it up.</p>
+<p>Finally we take our constraints, pass them to lp_solve, parse the results, and boom!</p>
 </div>
     </aside><div style=display:none>
     
@@ -4535,17 +4544,8 @@ In&nbsp;[29]:
 </div>
 
 </div>
-    </div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Sam notes:</em></p>
-<ul>
-<li>Could be interesting to have some scoring details or soccer stories</li>
-<li>Careful with points/goals terminology, listeners could be confused</li>
-<li>Replace equations slide, too much</li>
-<li>Move home/away slide to in front of model creation section</li>
-<li>More soccer pictures</li>
-</ul>
-</div>
+    </div><div style=display:none>
+    
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
@@ -4558,7 +4558,8 @@ In&nbsp;[]:
 </div>
 </div>
 
-</div></section>
+</div>
+    </div></section>
     </section>
 </div>
 </div>
