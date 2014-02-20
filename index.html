@@ -1749,7 +1749,12 @@ co-starring: IPython Notebook, matplotlib, and lp_solve
 Bill Mill
 </h3>
 <h4>
-<a href="http://billmill.org">billmill.org</a> <br><a href="http://github.com/llimllib">github.com/llimllib</a> <br><a href="http://twitter.com/llimllib">@llimllib</a>
+<script type="text/javascript">
+<!--
+h='&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;';a='&#64;';n='&#98;&#x69;&#108;&#108;&#46;&#x6d;&#x69;&#108;&#108;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+e+'<\/'+'a'+'>');
+// -->
+</script><noscript>&#98;&#x69;&#108;&#108;&#46;&#x6d;&#x69;&#108;&#108;&#32;&#x61;&#116;&#32;&#x67;&#x6d;&#x61;&#x69;&#108;&#32;&#100;&#x6f;&#116;&#32;&#x63;&#x6f;&#x6d;</noscript> <br><a href="http://billmill.org">billmill.org</a> <br><a href="http://github.com/llimllib">github.com/llimllib</a> <br><a href="http://twitter.com/llimllib">@llimllib</a>
 </h4>
 
 <h4>
@@ -4268,7 +4273,14 @@ In&nbsp;[19]:
 </div>
 </div>
 
-</div><div style=display:none>
+</div><aside class="notes">
+    
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Finally, we add a constraint for each position. This code writes four constraints, which together limit the solver to choosing 2 goalkeepers, 5 defenders, 5 midfielders, and 3 forwards.</p>
+<p>It does so by building a list of each player at each position, and limiting the sum of that position to the appropriate number.</p>
+<p>Each player variable is a binary value; 1 if they're on the team or 0 if they're not, so the ability to add them up to limit the number of players comes in handy.</p>
+</div>
+    </aside><div style=display:none>
     
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
@@ -4295,14 +4307,7 @@ In&nbsp;[20]:
 </div>
 
 </div>
-    </div><aside class="notes">
-    
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Finally, we add a constraint for each position. This code writes four constraints, which together limit the solver to choosing 2 goalkeepers, 5 defenders, 5 midfielders, and 3 forwards.</p>
-<p>It does so by building a list of each player at each position, and limiting the sum of that position to the appropriate number.</p>
-<p>Each player variable is a binary value; 1 if they're on the team or 0 if they're not, so the ability to add them up to limit the number of players comes in handy.</p>
-</div>
-    </aside></section><section>
+    </div></section><section>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
@@ -4379,7 +4384,7 @@ In&nbsp;[24]:
     
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>After some tweaking, I took the team that I'd generated and put it into play. The results were... OK. The computer definitely chose a better team than I had, but by the time I used it I had dug myself a pretty big hole.</p>
-<p>It doesn't help that I'm more interested in writing code than I am in maintaining my fantasy football team, so I've had to kiss those $5 goodbye.</p>
+<p>It doesn't help that I'm more interested in writing code than I am in maintaining my fantasy football team, so I think I'm going to have to kiss my $5 goodbye.</p>
 <p>In exchange though, I had a lot of fun playing around with ipython, solved a fun problem, and ended up with a talk. Not a bad outcome.</p>
 <p>Thanks.</p>
 </div>
