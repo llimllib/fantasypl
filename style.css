@@ -12,6 +12,16 @@
   margin: 0.5em 0;
   }
 
+#bigger {
+    font-size: 140%;
+    line-height: 1.4;
+}
+
+#biggerish {
+    font-size: 120%;
+    line-height: 1.2;
+}
+
 .title
 {
   color: #498AF3;

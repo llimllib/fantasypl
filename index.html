@@ -3611,7 +3611,7 @@ In&nbsp;[27]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[28]:
+In&nbsp;[29]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">team_abbreviations</span> <span class="o">=</span> <span class="p">{</span>
@@ -3656,7 +3656,7 @@ In&nbsp;[28]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[9]:
+In&nbsp;[30]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="k">class</span> <span class="nc">Player</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -3723,7 +3723,7 @@ In&nbsp;[9]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[10]:
+In&nbsp;[31]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">p</span> <span class="o">=</span> <span class="n">find_player</span><span class="p">(</span><span class="s">&#39;Van Persie&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
@@ -3752,7 +3752,6 @@ Forward
 264
 [(25, &apos;FUL&apos;, u&apos;H&apos;), (26, &apos;ARS&apos;, u&apos;A&apos;), (27, &apos;CRY&apos;, u&apos;A&apos;)]
 [Game vs. SWA A: 12 pts, Game vs. CHE H: 2 pts, Game vs. LIV A: 1 pts]
-
 #264 MUN Robin van Persie £136 f
 
 </pre>
@@ -3977,11 +3976,11 @@ Kg4ck4oDx6TiwDGpOHBMKg4ck4oDx6T6P9HGNPmcBWdpAAAAAElFTkSuQmCC
 </div><aside class="notes">
     
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>At this point, I stopped playing around in ipython to think a bit. Now that I had my players where I could get at them in a handy data structure, and the ability to run experiments on them, I needed to figure out a way to model a player's future predicted points.</p>
-<p>Once I had that, I'd be 90% of the way home; I'd just need to solve for a team that maximizes predicted points while costing less than the amount of money you have to spend.</p>
-<p>I knew I already had enough data to include three important factors in my player performance model: what team they played against, whether the game was home and away, and how they had performed up to this point in the season.</p>
-<p>I thought about continuing to generate factors, running regressions to see which of them were actually important in predicting performance, and playing with machine learning techniques to generate a team.</p>
-<p>Ultimately, though, I decided that you could save all that for another day's experiments. After all, I had a team to run and a league to win. So I thought, maybe I could get away with a dirt-simple model?</p>
+<p>At this point, I stopped playing around in ipython to think a bit. Now I had my players where I could get at them in a handy data structure, the ability to run experiments on them, and I'd found two important factors in predicting how many points they would score.</p>
+<p>I knew that their opponent in upcoming games was very important, and whether the game was at home or away was important, but less so.</p>
+<p>The next thing I needed to do was figure out a way to model a player's future predicted points.</p>
+<p>Once I had that, I'd be most of the way to picking a team automatically. I'd just need to ask the computer to solve for a team that maximizes expected value while costing less than the amount of money I had to spend.</p>
+<p>So I came up with a simple model, figuring that I could go back and change it if it didn't seem to generate a good team.</p>
 </div>
     </aside></section><section>
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -3991,10 +3990,12 @@ Kg4ck4oDx6TiwDGpOHBMKg4ck4oDx6T6P9HGNPmcBWdpAAAAAElFTkSuQmCC
 </div><aside class="notes">
     
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>So I took a guess at a simple model: Each player's expected value will be the sum of three factors.</p>
+<p>In the model I came up, each player's expected value is the sum of three factors.</p>
 <p>The first is a factor to compensate for their opponent; they gain points is their opponent is generous and lose them if they're stingy.</p>
-<p>The second is a factor for homefield advantage; they gain points for being at home and lose them for being away.</p>
-<p>The third is simply their past average score, adjusted for those opponent and homefield advantage factors.</p>
+<p>The second is a factor for homefield advantage; a player gains expected fantasy points for being at home and loses them for being away.</p>
+<p>The third is simply their past average score, adjusted for those same opponent and homefield advantage factors. So if their previous game was at home, we'd subtract some points which were presumably due to that homefield advantage. If it was away, we'd add them, hoping to neutralize its effect somewhat.</p>
+<p>I chose to look 5 games into the future for each player when calculating their expected value. That was bascially just an off-the-cuff decision I made trying to look a bit into the future without projecting too far out.</p>
+<p>This is a very simple model of player performance, and there's lots of things we could try to improve on, but it's a nice easy function to implement, that I figured would get me to a reasonable answer.</p>
 </div>
     </aside></section><section>
 <div class="cell border-box-sizing code_cell vbox">
@@ -4116,29 +4117,46 @@ In&nbsp;[16]:
 </div><aside class="notes">
     
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now, finally, I had all the data and a player model, so it was time to construct a team.</p>
-<p>Remember from before that we're after the answer to an optimization problem: I needed to pick a team of 15 players which costs less than £100 and fills up all the required player positions. Given those constraints, I wanted to pick the team that maximizes my expected fantasy point total.</p>
+<p>So now we have a player model and it's time to construct a team. Let's look again at what we're trying to do.</p>
+<p>I needed to pick a team of 15 players which costs less than £100 and fills up all the required player positions. Given those constraints, I wanted to pick the team that maximizes my expected fantasy point total.</p>
+<p>This sort of problem, where we're trying to maximize or minimize some quantity with regard to a series of linear constraints is known as a <em>linear optimization</em> problem.</p>
+<p>I had planned to use Scipy to solve the problem, but they don't have a very simple way to solve problems like this. Instead, after some googling, I turned to the special-purpose <em>lp_solve</em> program.</p>
 </div>
     </aside></section><section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Given this simple optimization problem:</p>
-<pre>
+<pre id="bigger">
 x1 >= 1
 x2 >= 1
 x1 + x2 >= 2
 minimize x1 + x2 where x1 is an integer
 </pre>
-
-<p><br>lp_solve takes a file that looks like:</p>
-<pre>
+</div><aside class="notes">
+    
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's start by giving ourselves a very simple linear optimization problem, and solving it with lp_solve.</p>
+<p>Take a look at this problem, and take a second to understand it. We have three constraints:</p>
+<ul>
+<li>x1 &gt;= 1</li>
+<li>x2 &gt;= 1</li>
+<li>x1 + x2 &gt;= 2</li>
+</ul>
+<p>and we want to minimize the sum of x1 + x2 given those constraints.</p>
+<p>It should be clear the sum of x1 and x2 is minimized when x1 == x2 == 1.</p>
+</div>
+    </aside></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>lp_solve takes a file that looks like:</p>
+<pre id="bigger">
 min: x1 + x2;
 x1 >= 1;
 x2 >= 1;
 x1 + x2 >= 2;
+int x1, x2;
 </pre>
 
 <p><br>Which, when run, results in:</p>
-<pre>
+<pre id="bigger">
 $ lp_solve /tmp/simple_example
 Value of objective function: 2.00000000
 Actual values of the variables:
@@ -4148,36 +4166,29 @@ x2                              1
 </div><aside class="notes">
     
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Unfortunately, scipy doesn't have any handy functions to solve this type of problem, so I had to look elsewhere. When I did, I discovered a pretty simple program called lp_solve.</p>
-<p>lp_solve is pretty simple: it allows you to phrase an optimization problem in a simple file format, which you then pass to lp_solve to get an answer.</p>
-<p>For a simple demonstration of how it works, we give it three constraints:</p>
-<ul>
-<li>x1 &gt;= 1</li>
-<li>x2 &gt;= 1</li>
-<li>x1 + x2 &gt;= 2</li>
-</ul>
-<p>and ask it to minimize the sum of x1 + x2 given those constraints.</p>
-<p>It tells us, of course, that x1 == x2 == 1</p>
-<p><em>notes</em>: Give them time to read that? Have more explanation? Even simpler example?</p>
+<p>To solve this problem with lp_solve, we create a file in lp_solve format, as shown on the top here. It starts by telling lp_solve what function to minimize or maximize, and follows it with a series of constraints; one per line. Finally, we declare the type of all the variables we've used.</p>
+<p>When we run lp_solve, it parses the file, minimizes the function we've given it, and returns the value of each variable.</p>
 </div>
     </aside></section><section>
 <div class="text_cell_render border-box-sizing rendered_html">
-<pre>
-max: 5.6 gk1 + 4.3 mf2 + 3.8 d3 ...;  /* maximize expected points */
-3.7 gk1 + 9.3 mf2 + 4.6 d3 ... < 100; /* team must cost <100£     */
-gk1 + gk12 + gk36 + ... = 2;          /* limit to 2 goalkeepers   */
-d3 + d4 + d8 + ... = 5;               /* limit to 5 defenders     */
-...                                   /* repeat for all positions */
-bin gk1, mf2, d3, f4, d5, ....;       /* all variables are binary */
+<pre id="biggerish">
+max: 5.6 gk1 + 4.3 mf2 + …;  /* maximize expected points */
+3.7 gk1 + 9.3 mf2 + … < 100; /* team must cost <100£     */
+gk1 + gk12 + gk34 + … = 2;   /* limit to 2 goalkeepers   */
+d3 + d4 + d23 + … = 5;       /* limit to 5 defenders     */
+…                            /* repeat for all positions */
+bin gk1, mf2, d3, f4, d5, …; /* all variables are binary */
 </pre>
 </div><aside class="notes">
     
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The file I ended up passing to lp_solve isn't a whole lot different from that simple example; I just translated the fantasy football problem into a maximization problem using the values we already discussed.</p>
-<p>lp_solve supports binary variables, so I made a variable to represent each player in the data set, consisting of their position and id number. For example, if player 2 is a midfielder, he'll be represented by mf2, as above.</p>
 <p>The value we want to maximize is the expected point total of the players we choose.</p>
 <p>The first constraint is our cost constraint; we want to make sure we can afford to buy the team the program picks.</p>
 <p>Then there are four constraints, one for each position; we limit lp_solve to choosing 2 goalkeepers, 5 defenders, 5 midfielders, and 3 forwards.</p>
+<p>lp_solve supports binary variables, so I made a variable to represent each player in the data set, consisting of their position and id number. For example, if player 2 is a midfielder, he'll be represented by mf2, as above.</p>
+<p>The output of lp_solve would be a 1 if the player was selected for the team and a zero if they weren't.</p>
+<p>That's why we're able to simply add up the player counts to get the position constraints; the player is a 1 if they've been selected and a zero otherwise.</p>
 </div>
     </aside></section><section>
 <div class="cell border-box-sizing code_cell vbox">
@@ -4199,6 +4210,7 @@ In&nbsp;[17]:
 </div><aside class="notes">
     
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>So my next step was to create the lp_solve file</p>
 <p>First, I wrote a function to output a maximization criteria. All it does is iterate through all players and join each player together, weighted by their expected point value.</p>
 <p>This creates the expression lp_solve will be trying to maximize.</p>
 </div>
@@ -4355,14 +4367,28 @@ In&nbsp;[24]:
 </div><aside class="notes">
     
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Finally we take our constraints, pass them to lp_solve, parse the results, and boom!</p>
+<p>Finally we take our constraints, pass them to lp_solve, parse the results, and it outputs a team!</p>
+<p>Some improvments immediately suggest themselves; for example, lp_solve has chosen 5 players from the same team.</p>
+</div>
+    </aside></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/mourinho-waving-finger.gif" />
+</center>
+</div><aside class="notes">
+    
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>After some tweaking, I took the team that I'd generated and put it into play. The results were... OK. The computer definitely chose a better team than I had, but by the time I used it I had dug myself a pretty big hole.</p>
+<p>It doesn't help that I'm more interested in writing code than I am in maintaining my fantasy football team, so I've had to kiss those $5 goodbye.</p>
+<p>In exchange though, I had a lot of fun playing around with ipython, solved a fun problem, and ended up with a talk. Not a bad outcome.</p>
+<p>Thanks.</p>
 </div>
     </aside><div style=display:none>
     
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[26]:
+In&nbsp;[34]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="o">%</span><span class="k">run</span> <span class="n">talktools</span>
@@ -4392,6 +4418,16 @@ In&nbsp;[26]:
   line-height: 1.1;
   margin: 0.5em 0;
   }
+
+#bigger {
+    font-size: 140%;
+    line-height: 1.4;
+}
+
+#biggerish {
+    font-size: 120%;
+    line-height: 1.2;
+}
 
 .title
 {
