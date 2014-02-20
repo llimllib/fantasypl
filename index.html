@@ -1744,7 +1744,7 @@ co-starring: IPython Notebook, matplotlib, and lp_solve
 
 <center>
 
-<p class="gap05"<p>
+<p class="gap05"><p>
 <h3>
 Bill Mill
 </h3>
@@ -1752,7 +1752,9 @@ Bill Mill
 <a href="http://billmill.org">billmill.org</a> <br><a href="http://github.com/llimllib">github.com/llimllib</a> <br><a href="http://twitter.com/llimllib">@llimllib</a>
 </h4>
 
-<p class="gap2"><p>
+<h4>
+This talk is available at: http://billmill.org/fantasypl/
+</h4>
 </center>
 </div><aside class="notes">
     
@@ -1770,8 +1772,8 @@ Bill Mill
 </div><aside class="notes">
     
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>A few weeks ago, my friend suckered me into a fantasy football league - the kind with round balls, not oblong. I like watching soccer, but I didn't have any idea how the fantasy game worked.</p>
-<p>I <em>am</em> competitive though, so I wanted to do well enough not to embarrass myself.</p>
+<p>A few weeks ago, my friend suckered me into a fantasy soccer league. I like watching soccer, and we had watched a couple games together. I'd also played fantasy (American) football before, but I didn't have any idea how fantasy soccer worked.</p>
+<p>I <em>am</em> competitive though, so I agreed to play and wanted to do well enough not to embarrass myself.</p>
 <p>The first thing I had to do was to figure out how the game works.</p>
 </div>
     </aside></section><section>
@@ -1877,7 +1879,7 @@ In&nbsp;[]:
 </div><aside class="notes">
     
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>After that turned out to be unexpectedly easy, I faced my next problem: I had the data on my computer, but no idea what to do with it.</p>
+<p>Now I was in a situation I find myself in frequently. I had an idea, I got all excited, went and downloaded data, but I needed to figure out how to get from the data to the answer I was looking for. Oftentimes, in the past, I'd end up with a directory full of half-finished scripts, and no answer.</p>
 </div>
     </aside></section><section>
 <div class="cell border-box-sizing code_cell vbox">
@@ -1913,7 +1915,7 @@ In&nbsp;[63]:
 </div><aside class="notes">
     
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Enter: ipython notebook. Although it's reasonably new, ipython notebook has rapidly become my go-to tool for exploring data, generating graphs, and running experiments.</p>
+<p>Enter: ipython notebook. Although it's reasonably new, ipython notebook has rapidly become my go-to tool for exploring data, generating graphs, and running experiments. It's great to keep all that stuff in one place, so you can see what work you've done and avoid having three different versions of a function in three different scripts. It also allows you to go back and edit the things you've done, leading to a very iterative style of development.</p>
 <p>This talk, itself, is an ipython notebook presentation converted into a slideshow.</p>
 <p>If you're not familiar with the funny little &quot;In&quot; and &quot;Out&quot; notations on the left side, they indicate an ipython notebook cell. You write code in the &quot;In&quot; field, and see your output (no surprise here) in the &quot;Out&quot;.</p>
 </div>
@@ -2514,9 +2516,9 @@ In&nbsp;[5]:
 </div><aside class="notes">
     
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This is another ipython cell; this time it's loading the player data and showing the JSON object the web api returned for the player with id 1.</p>
-<p>It looks like the object contains all the player information we need, primarily in a big <code>fixture_history</code> array that contains big, unlabelled, arrays, so let's begin playing around with it.</p>
+<p>I've created an ipython cell and loaded the player data that I downloaded with requests, then printed the first player's JSON data.</p>
 <p>When you execute a cell in Ipython notebook, the variables you create are available for your use later on. Here, we've loaded the pickle file into a variable <code>players</code>, which we'll continue to use throughout the spreadsheet.</p>
+<p>It looks like the object contains all the player information we need, primarily in a big <code>fixture_history</code> array that contains big, unlabelled, arrays. It contains their cost, the amount of points they've scored overall, their name, a list of all the games they've played, and a list of all their upcoming games.</p>
 </div>
     </aside><div style=display:none>
     
@@ -2967,7 +2969,6 @@ In&nbsp;[8]:
     <span class="n">avgs</span><span class="p">[</span><span class="n">opponent</span><span class="p">]</span> <span class="o">=</span> <span class="n">score</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 
 <span class="n">sorted_avgs</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">avgs</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
-<span class="n">avg_opponent</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">avgs</span><span class="o">.</span><span class="n">values</span><span class="p">())</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">avgs</span><span class="p">))</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
 <span class="n">x_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sorted_avgs</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
@@ -3581,32 +3582,39 @@ RU5ErkJggg==
 </div>
 </div>
 
-</div><aside class="notes">
+</div><div style=display:none>
     
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Next I asked another question: How many points does each team allow their opponents, on average?</p>
-<p>So, again I iterated through all the player data. This time I saved the amount of points each player scored to a dictionary keyed by their opponent. Again, I made a graph of the result.</p>
-<p>This time, I was impressed by the size of the effect: Liverpool, the stingiest team, gave up less than 2.2 fantasy points, on average, to their opponents. Fulham, the most generous, gave up nearly 4.</p>
-<p>A game against the weakest team is worth nearly <em>double</em>, on average, to a game against the strongest!</p>
-</div>
-    </aside></section><section>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[9]:
+In&nbsp;[27]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Game</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">game_json</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">opp</span> <span class="o">=</span> <span class="n">game_json</span><span class="p">[</span><span class="mi">2</span><span class="p">][:</span><span class="mi">3</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">loc</span> <span class="o">=</span> <span class="n">game_json</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span> <span class="c"># &quot;A&quot; for away, &quot;H&quot; for home</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="n">game_json</span><span class="p">[</span><span class="mi">19</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">minutes</span> <span class="o">=</span> <span class="n">game_json</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-    
-    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s">&quot;Game vs. </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s"> pts&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">opp</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">)</span>
+<div class="highlight"><pre><span class="n">avg_opponent</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">avgs</span><span class="o">.</span><span class="n">values</span><span class="p">())</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">avgs</span><span class="p">))</span>
+</pre></div>
 
-<span class="n">team_abbreviations</span> <span class="o">=</span> <span class="p">{</span>
+</div>
+</div>
+
+</div>
+    </div><aside class="notes">
+    
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next I asked another question: How many points does each team allow their opponents, on average?</p>
+<p>So, again I iterated through all the player data. This time I saved the amount of points each player scored to a dictionary keyed by their opponent, then made a graph of the result.</p>
+<p>I was impressed by the size of the effect: Liverpool, the stingiest team, gave up less than 2.2 fantasy points, on average, to their opponents. Fulham, the most generous, gave up nearly 4.</p>
+<p>A game against the weakest team is worth nearly <em>double</em>, on average, to a game against the strongest!</p>
+<p>This experiment demonstrated that a player's opponent in a fantasy game seems to be an important factor in how many points we can expect them to score in the future. We'll see later how this factors into our player model, and therefore what players the computer is going to select for us.</p>
+</div>
+    </aside><div style=display:none>
+    
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[28]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">team_abbreviations</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">&#39;Norwich&#39;</span><span class="p">:</span> <span class="s">&#39;NOR&#39;</span><span class="p">,</span>
     <span class="s">&#39;Cardiff City&#39;</span><span class="p">:</span> <span class="s">&#39;CAR&#39;</span><span class="p">,</span>
     <span class="s">&#39;Man City&#39;</span><span class="p">:</span> <span class="s">&#39;MCI&#39;</span><span class="p">,</span>
@@ -3628,8 +3636,30 @@ In&nbsp;[9]:
     <span class="s">&#39;Aston Villa&#39;</span><span class="p">:</span> <span class="s">&#39;AVL&#39;</span><span class="p">,</span>
     <span class="s">&#39;Chelsea&#39;</span><span class="p">:</span> <span class="s">&#39;CHE&#39;</span><span class="p">,</span>
 <span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">Game</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">game_json</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">opp</span> <span class="o">=</span> <span class="n">game_json</span><span class="p">[</span><span class="mi">2</span><span class="p">][:</span><span class="mi">3</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loc</span> <span class="o">=</span> <span class="n">game_json</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span> <span class="c"># &quot;A&quot; for away, &quot;H&quot; for home</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="n">game_json</span><span class="p">[</span><span class="mi">19</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">minutes</span> <span class="o">=</span> <span class="n">game_json</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
     
-<span class="k">class</span> <span class="nc">Player</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&quot;Game vs. </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s"> pts&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">opp</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+    </div></section><section>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[9]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Player</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player_json</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">raw</span> <span class="o">=</span> <span class="n">player_json</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">games</span> <span class="o">=</span> <span class="p">[</span><span class="n">Game</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">player_json</span><span class="p">[</span><span class="s">&quot;fixture_history&quot;</span><span class="p">][</span><span class="s">&quot;all&quot;</span><span class="p">]]</span>
