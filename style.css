@@ -78,7 +78,7 @@
 
 .input_prompt, .CodeMirror-lines, .output_area
 {
-  font-family: Consolas;
+  /* font-family: Consolas; */
   font-size: 120%;
   }
 
