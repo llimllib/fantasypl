@@ -3703,7 +3703,6 @@ In&nbsp;[10]:
 <span class="k">print</span> <span class="n">p</span><span class="o">.</span><span class="n">idn</span>
 <span class="k">print</span> <span class="n">p</span><span class="o">.</span><span class="n">upcoming</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>  <span class="c"># upcoming games</span>
 <span class="k">print</span> <span class="n">p</span><span class="o">.</span><span class="n">games</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>     <span class="c"># games he&#39;s already played</span>
-<span class="k">print</span> <span class="n">p</span><span class="o">.</span><span class="n">news</span>
 <span class="k">print</span> <span class="n">p</span>
 </pre></div>
 
@@ -4106,7 +4105,6 @@ min: x1 + x2;
 x1 >= 1;
 x2 >= 1;
 x1 + x2 >= 2;
-int x1;
 </pre>
 
 <p><br>Which, when run, results in:</p>
@@ -4278,7 +4276,7 @@ In&nbsp;[24]:
     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Unable to find player&quot;</span><span class="p">)</span>
     
 <span class="k">def</span> <span class="nf">return_team</span><span class="p">(</span><span class="n">lp</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;run lp_solve and return a list of player objects&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;run lp_solve ands return a list of player objects&quot;&quot;&quot;</span>
     <span class="n">cmd</span> <span class="o">=</span> <span class="s">&quot;echo &#39;</span><span class="si">%s</span><span class="s">&#39; | lp_solve&quot;</span> <span class="o">%</span> <span class="n">lp</span>
     <span class="n">val</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
     <span class="n">get_id</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">l</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">&quot;^\w+?(\d+)&quot;</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
