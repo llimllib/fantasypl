@@ -29,6 +29,9 @@ def website(url, name=None, width=800, height=450):
                 (prefix(url), width, height))
     return HTML('\n'.join(html))
 
+from pprint import pformat as pf
+def scrolling_div(o):
+    return HTML('<div class="output vbox output_scroll"><pre>%s</pre></div>' % pf(o))
 
 def nbviewer(url, name=None, width=800, height=450):
     return website('nbviewer.ipython.org/url/' + url, name, width, height)
