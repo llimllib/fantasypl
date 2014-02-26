@@ -3,7 +3,7 @@ notebook:
 
 slides:
 	ipython nbconvert --to slides Fantasy\ Football\ Presentation.ipynb
-	mv Fantasy\ Football\ Presentation.slides.html index.html
+	mv Fantasy\ Football\ Presentation.slides.html slides.html
 
 html:
 	ipython nbconvert --to html --stdout FF\ Pres\ Web\ Version.ipynb > webversion.html
