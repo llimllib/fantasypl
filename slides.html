@@ -1,13 +1,31 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Choosing a fantasy Football team with ipython</title>
-<link rel="stylesheet" href="http://billmill.org/css/960css/reset.css" />
-<link rel="stylesheet" href="http://billmill.org/css/960css/960.css" />
-<link rel="stylesheet" href="http://billmill.org/css/style.css" />
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<!-- General and theme style sheets -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/reveal.js/2.4.0/css/reveal.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/reveal.js/2.4.0/css/theme/simple.css" id="theme">
+
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/reveal.js/2.4.0/lib/css/zenburn.css">
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<script>
+document.write( '<link rel="stylesheet" href="//cdn.jsdelivr.net/reveal.js/2.4.0/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+</script>
+
+<!--[if lt IE 9]>
+<script src="//cdn.jsdelivr.net/reveal.js/2.4.0/lib/js/html5shiv.js"></script>
+<![endif]-->
+
 <style type="text/css">
-.slide { border: 1px solid black; }
     .clearfix{*zoom:1;}.clearfix:before,.clearfix:after{display:table;content:"";line-height:0;}
 .clearfix:after{clear:both;}
 .hide-text{font:0/0 a;color:transparent;text-shadow:none;background-color:transparent;border:0;}
@@ -1655,56 +1673,67 @@ h1:hover .anchor-link,h2:hover .anchor-link,h3:hover .anchor-link,h4:hover .anch
 
 <style type="text/css">
 /* Overrides of notebook CSS for static HTML export */
-body {
-  overflow: visible;
-  padding: 8px;
+.reveal {
+font-size: 20px;
+overflow-y: auto;
+overflow-x: hidden;
 }
-.input_area {
-  padding: 0.2em;
+.reveal pre {
+width: 95%;
+padding: 0.4em;
+margin: 0px;
+font-family: monospace, sans-serif;
+font-size: 80%;
+box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
 }
-
-pre {
-    padding: 0.2em;
-    border: none;
-    margin: 0px;
-    font-size: 13px;
+.reveal section img {
+border: 0px solid black;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+}
+.reveal .slides {
+text-align: left;
+}
+.reveal.fade {
+opacity: 1;
+}
+div.input_area {
+padding: 0.06em;
+}
+div.code_cell {
+background-color: transparent;
+}
+div.prompt {
+width: 11ex;
+padding: 0.4em;
+margin: 0px;
+font-family: monospace, sans-serif;
+font-size: 80%;
+text-align: right;
+}
+div.output_area pre {
+font-family: monospace, sans-serif;
+font-size: 80%;
+}
+div.output_prompt {
+    /* 5px right shift to account for margin in parent container */
+    margin: 5px 5px 0 0;
+}
+.rendered_html p {
+text-align: inherit;
 }
 </style>
 
 <!-- Custom stylesheet, it must be in the same directory as the html file -->
 <link rel="stylesheet" href="custom.css">
 
-<script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
-<script type="text/javascript">
-init_mathjax = function() {
-    if (window.MathJax) {
-        // MathJax loaded
-        MathJax.Hub.Config({
-            tex2jax: {
-                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
-            },
-            displayAlign: 'left', // Change this to 'center' to center equations.
-            "HTML-CSS": {
-                styles: {'.MathJax_Display': {"margin": 0}}
-            }
-        });
-        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-    }
-}
-init_mathjax();
-</script>
 </head>
+
 <body>
-<div class="container_16">
-  <div class="grid_3">
-      <a href="http://billmill.org"><img src="http://billmill.org/images/logo.png" width="136" height="94"></a>
-  </div>
-  <div class="clear"></div>
-
-  <div class="grid_13 prefix_3 mainboxes">
-
-<div class="text_cell_render border-box-sizing rendered_html slide">
+<div class="reveal">
+<div class="slides">
+<section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1>
 Choosing a Fantasy Football Team
 </h1>
@@ -1720,41 +1749,51 @@ co-starring: IPython Notebook, matplotlib, and lp_solve
 Bill Mill
 </h3>
 <h4>
-<a href="http://twitter.com/llimllib">@llimllib</a> <br><script type="text/javascript">
+<script type="text/javascript">
 <!--
 h='&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;';a='&#64;';n='&#98;&#x69;&#108;&#108;&#46;&#x6d;&#x69;&#108;&#108;';e=n+a+h;
 document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+e+'<\/'+'a'+'>');
 // -->
-</script><noscript>&#98;&#x69;&#108;&#108;&#46;&#x6d;&#x69;&#108;&#108;&#32;&#x61;&#116;&#32;&#x67;&#x6d;&#x61;&#x69;&#108;&#32;&#100;&#x6f;&#116;&#32;&#x63;&#x6f;&#x6d;</noscript> <br><a href="http://billmill.org">billmill.org</a> <br><a href="http://github.com/llimllib">github.com/llimllib</a>
+</script><noscript>&#98;&#x69;&#108;&#108;&#46;&#x6d;&#x69;&#108;&#108;&#32;&#x61;&#116;&#32;&#x67;&#x6d;&#x61;&#x69;&#108;&#32;&#100;&#x6f;&#116;&#32;&#x63;&#x6f;&#x6d;</noscript> <br><a href="http://billmill.org">billmill.org</a> <br><a href="http://github.com/llimllib">github.com/llimllib</a> <br><a href="http://twitter.com/llimllib">@llimllib</a>
 </h4>
 
-<br>This notebook can be downloaded <a href="https://github.com/llimllib/fantasypl/blob/gh-pages/Fantasy%20Football%20Presentation.ipynb">here</a>
+<h4>
+This talk is available at: <a href="http://billmill.org/fantasypl">billmill.org/fantasypl</a>
 </h4>
 </center>
-</div>
+</div><aside class="notes">
+    
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>Hello, and thanks for coming. My name's Bill Mill. I've listed some of the ways you can get in touch with me on the slide, and you're welcome to follow along if you'd like at billmill.org/fantasypl .</p>
 <p>A couple months ago, my friend suckered me into a fantasy football league.</p>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html slide">
+    </aside></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="images/thisnotthis.png" />
 </center>
-</div>
+</div><aside class="notes">
+    
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>I like watching soccer, and we had watched a couple games together. I'd also played fantasy (American) football before, but I didn't have any idea how fantasy soccer worked.</p>
 <p>I <em>am</em> competitive though, so I agreed to play and wanted to do well enough not to embarrass myself.</p>
 <p>The first thing I had to do was to figure out how the game works.</p>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html slide">
+    </aside></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="images/screen.png" />
 </center>
-</div>
+</div><aside class="notes">
+    
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In Fantasy Football, you have a team of 15 British Premier League players; 2 goalkeepers, 5 defenders, 5 midfielders, and 3 forwards.</p>
-<p>Each week, you pick 11 starters and 4 subs. Your fantasy team scores points based on how well your players do: goals, assists, saves and preventing the other team from scoring all gain you fantasy points.</p>
+<p>Each week, you pick 11 starters and 4 subs. You score points based on how well your players do: goals, assists, saves and preventing the other team from scoring all gain you fantasy points.</p>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html slide">
+    </aside></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="you-have-a-limited-budget">You have a limited budget</h1>
 <center>
 <img src="images/bank.jpg" />
@@ -1764,13 +1803,15 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+e+'<\/'+'a'+'>');
 <center>
 <img src="images/prices.jpg" />
 </center>
-</div>
+</div><aside class="notes">
+    
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>As you assemble your team, you have one big constraint: each player costs a certain amount of money, and you have a limited bankroll. So, to assemble your team, you want to choose the 15 players that will score the most points <em>given</em> that they cost less than your bank account.</p>
 <p>The cost for each player ranges from about £4 to 14, based on how many other people have bought the player, and is not fixed. If a player scores more fantasy points, his price will go up; fewer and his price goes down.</p>
 <p>Each week, you're allowed to trade out one of your players for a different player as long as you have enough money to buy the new player. Twice a season, you're allowed to play a wild card that allows you to trade out your entire team.</p>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html slide">
+    </aside></section><section>
+<div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <h1>
 That sounds like an optimization problem...
@@ -1780,21 +1821,27 @@ That sounds like an optimization problem...
 I bet I could solve that with code
 </h2>
 </center>
-</div>
+</div><aside class="notes">
+    
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Once I'd picked up the rules, I started playing around with building up a team. I managed to build one manually, but it was a pain and I did so pretty poorly. I didn't really know the players, or the strategy, so I had to make some wild guesses.</p>
 <p>A few weeks into the season, my team stunk, but I was getting the hang of things. I was frustrated that my team wasn't very good, so I decided to see if I could get my computer to pick a better team for me than the one I had picked myself.</p>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html slide">
+    </aside></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="images/api.png" />
 </center>
-</div>
+</div><aside class="notes">
+    
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Once I'd decided I was going to use my computer, the first thing I needed to do is gather data for all the players in the Premier League. There's no official API, so I opened up my trusty Chrome inspector and did some digging.</p>
 <p>After a brief search, I found an endpoint called /web/api, which looked like it output JSON. Awesome!</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox slide">
+    </aside></section><section>
+<div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
 In&nbsp;[]:
@@ -1820,20 +1867,26 @@ In&nbsp;[]:
 </div>
 </div>
 
-</div>
+</div><aside class="notes">
+    
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>After I played with it a bit, I discovered that each player has an ID between 0 and 600, though some IDs are not taken. The endpoint is indeed JSON, so it's super simple to download and parse.</p>
 <p>I wrote this little script to download every players' data, stick it in a dictionary, and save it to a file.</p>
 <p>As you can see, it's very simple; it was a good thing I dug around and found that API so I didn't have to resort to screen scraping.</p>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html slide">
+    </aside></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="images/nowwhat.gif" />
 </center>
-</div>
+</div><aside class="notes">
+    
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now I was in a situation I find myself in frequently. I had an idea, I got all excited, went and downloaded data, but I needed to figure out how to get from the data to the answer I was looking for. Oftentimes, in the past, I'd end up with a directory full of half-finished scripts, and no answer.</p>
 </div>
+    </aside></section><section>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
@@ -1855,7 +1908,7 @@ In&nbsp;[63]:
 <div class="box-flex1 output_subarea output_pyout">
 
 <div class="output_html rendered_html">
-<iframe src="http://ipython.org/notebook.html"  width="675" height="450"></iframe>
+<iframe src="http://ipython.org/notebook.html"  width="800" height="450"></iframe>
 </div>
 
 </div>
@@ -1864,21 +1917,23 @@ In&nbsp;[63]:
 </div>
 </div>
 
-</div>
+</div><aside class="notes">
+    
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Enter: ipython notebook. Although it's reasonably new, ipython notebook has rapidly become my go-to tool for exploring data, generating graphs, and running experiments. It's great to keep all that stuff in one place, so you can see what work you've done and avoid having three different versions of a function in three different scripts. It also allows you to go back and edit the things you've done, leading to a very iterative style of development.</p>
 <p>This talk, itself, is an ipython notebook presentation converted into a slideshow.</p>
 <p>If you're not familiar with the funny little &quot;In&quot; and &quot;Out&quot; notations on the left side, they indicate an ipython notebook cell. You write code in the &quot;In&quot; field, and see your output (no surprise here) in the &quot;Out&quot;.</p>
 </div>
+    </aside></section><section>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[2]:
+In&nbsp;[5]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">cPickle</span>
 <span class="n">players</span> <span class="o">=</span> <span class="n">cPickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&quot;players.data.pickle&quot;</span><span class="p">))</span>
-<span class="n">scrolling_div</span><span class="p">(</span><span class="n">players</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">players</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -1889,654 +1944,573 @@ In&nbsp;[2]:
 
 
 <div class="hbox output_area"><div class="prompt output_prompt">
-    Out[2]:</div>
+    Out[5]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 
-<div class="output_html rendered_html">
-<div class="output vbox output_scroll"><pre>{u'added': u'2013-07-15T13:21:12 UTC+0000',
- u'code': 37096,
- u'current_fixture': u'Crystal Palace (H)',
- u'element_type_id': 1,
- u'event_cost': 42,
- u'event_explain': [[u'Minutes played', 0, 0]],
- u'event_points': 0,
- u'event_total': 0,
- u'first_name': u'Lukasz',
- u'fixture_history': {u'all': [[u'17 Aug 15:00',
-                                1,
-                                u'AVL(H) 1-3',
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                45,
-                                0],
-                               [u'24 Aug 12:45',
-                                2,
-                                u'FUL(A) 3-1',
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                -1322,
-                                45,
-                                0],
-                               [u'01 Sep 16:00',
-                                3,
-                                u'TOT(H) 1-0',
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                -1350,
-                                45,
-                                0],
-                               [u'14 Sep 15:00',
-                                4,
-                                u'SUN(A) 3-1',
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                -1259,
-                                44,
-                                0],
-                               [u'22 Sep 13:30',
-                                5,
-                                u'STK(H) 3-1',
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                -1091,
-                                44,
-                                0],
-                               [u'28 Sep 17:30',
-                                6,
-                                u'SWA(A) 2-1',
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                -852,
-                                44,
-                                0],
-                               [u'06 Oct 16:00',
-                                7,
-                                u'WBA(A) 1-1',
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                -712,
-                                44,
-                                0],
-                               [u'19 Oct 15:00',
-                                8,
-                                u'NOR(H) 4-1',
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                -388,
-                                44,
-                                0],
-                               [u'26 Oct 12:45',
-                                9,
-                                u'CRY(A) 2-0',
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                -343,
-                                43,
-                                0],
-                               [u'02 Nov 17:30',
-                                10,
-                                u'LIV(H) 2-0',
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                -218,
-                                43,
-                                0],
-                               [u'10 Nov 16:10',
-                                11,
-                                u'MUN(A) 0-1',
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                -247,
-                                43,
-                                0],
-                               [u'23 Nov 15:00',
-                                12,
-                                u'SOU(H) 2-0',
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                -221,
-                                43,
-                                0],
-                               [u'30 Nov 15:00',
-                                13,
-                                u'CAR(A) 3-0',
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                -257,
-                                43,
-                                0],
-                               [u'04 Dec 19:45',
-                                14,
-                                u'HUL(H) 2-0',
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                -283,
-                                43,
-                                0],
-                               [u'08 Dec 16:00',
-                                15,
-                                u'EVE(H) 1-1',
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                -251,
-                                43,
-                                0],
-                               [u'14 Dec 12:45',
-                                16,
-                                u'MCI(A) 3-6',
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                -213,
-                                42,
-                                0],
-                               [u'23 Dec 20:00',
-                                17,
-                                u'CHE(H) 0-0',
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                -123,
-                                42,
-                                0],
-                               [u'26 Dec 15:00',
-                                18,
-                                u'WHU(A) 3-1',
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                -105,
-                                42,
-                                0],
-                               [u'29 Dec 13:30',
-                                19,
-                                u'NEW(A) 1-0',
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                -103,
-                                42,
-                                0],
-                               [u'01 Jan 15:00',
-                                20,
-                                u'CAR(H) 2-0',
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                -83,
-                                42,
-                                0],
-                               [u'13 Jan 20:00',
-                                21,
-                                u'AVL(A) 2-1',
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                -17,
-                                42,
-                                0],
-                               [u'18 Jan 15:00',
-                                22,
-                                u'FUL(H) 2-0',
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                -32,
-                                42,
-                                0],
-                               [u'28 Jan 19:45',
-                                23,
-                                u'SOU(A) 2-2',
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                -35,
-                                42,
-                                0],
-                               [u'02 Feb 16:00',
-                                24,
-                                u'CRY(H) 2-0',
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                -6,
-                                42,
-                                0]],
-                      u'summary': [[22, u'FUL (H)', 0],
-                                   [23, u'SOU (A)', 0],
-                                   [24, u'CRY (H)', 0]]},
- u'fixtures': {u'all': [[u'08 Feb 12:45', u'Gameweek 25', u'Liverpool (A)'],
-                        [u'12 Feb 19:45', u'Gameweek 26', u'Man Utd (H)'],
-                        [u'22 Feb 15:00', u'Gameweek 27', u'Sunderland (H)'],
-                        [u'01 Mar 15:00', u'Gameweek 28', u'Stoke City (A)'],
-                        [u'08 Mar 15:00', u'Gameweek 29', u'Swansea (H)'],
-                        [u'16 Mar 16:00', u'Gameweek 30', u'Tottenham (A)'],
-                        [u'22 Mar 12:45', u'Gameweek 31', u'Chelsea (A)'],
-                        [u'29 Mar 17:30', u'Gameweek 32', u'Man City (H)'],
-                        [u'05 Apr 15:00', u'Gameweek 33', u'Everton (A)'],
-                        [u'12 Apr 15:00', u'Gameweek 34', u'West Ham (H)'],
-                        [u'19 Apr 15:00', u'Gameweek 35', u'Hull City (A)'],
-                        [u'26 Apr 15:00', u'Gameweek 36', u'Newcastle (H)'],
-                        [u'03 May 15:00', u'Gameweek 37', u'West Brom (H)'],
-                        [u'11 May 15:00', u'Gameweek 38', u'Norwich (A)']],
-               u'summary': [[25, u'LIV (A)', u'08 Feb 12:45'],
-                            [26, u'MUN (H)', u'12 Feb 19:45'],
-                            [27, u'SUN (H)', u'22 Feb 15:00']]},
- u'form': 0.0,
- u'id': 1,
- u'in_dreamteam': False,
- u'last_season_points': 0,
- u'max_cost': 45,
- u'min_cost': 42,
- u'news': u'',
- u'news_added': None,
- u'news_return': None,
- u'news_updated': None,
- u'next_fixture': u'Liverpool (A)',
- u'now_cost': 42,
- u'original_cost': 45,
- u'photo_mobile_url': u'http://cdn.ismfg.net/static/plfpl/img/shirts/photos/37096.jpg',
- u'points_per_game': 0.0,
- u'season_history': [[u'2007/08',
-                      248,
-                      0,
-                      0,
-                      0,
-                      2,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      8,
-                      0,
-                      0,
-                      0,
-                      46,
-                      15],
-                     [u'2008/09',
-                      463,
-                      0,
-                      0,
-                      0,
-                      10,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      18,
-                      0,
-                      0,
-                      0,
-                      46,
-                      20],
-                     [u'2009/10',
-                      360,
-                      0,
-                      0,
-                      0,
-                      5,
-                      0,
-                      0,
-                      0,
-                      1,
-                      0,
-                      11,
-                      0,
-                      0,
-                      0,
-                      49,
-                      15],
-                     [u'2010/11',
-                      1260,
-                      0,
-                      1,
-                      5,
-                      14,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      33,
-                      2,
-                      0,
-                      0,
-                      45,
-                      55],
-                     [u'2011/12',
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      53,
-                      0],
-                     [u'2012/13',
-                      360,
-                      0,
-                      0,
-                      1,
-                      3,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      7,
-                      0,
-                      57,
-                      0,
-                      42,
-                      13]],
- u'second_name': u'Fabianski',
- u'selected': 17295,
- u'selected_by': u'0.5',
- u'shirt_image_url': u'http://cdn.ismfg.net/static/plfpl/img/shirts/shirt_1_1.png',
- u'shirt_mobile_image_url': u'http://cdn.ismfg.net/static/plfpl/img/shirts/mobile/shirt_1_1.png',
- u'squad_number': None,
- u'status': u'a',
- u'team_code': 37096,
- u'team_id': 1,
- u'team_name': u'Arsenal',
- u'total_points': 0,
- u'transfers_in': 4112,
- u'transfers_in_event': 31,
- u'transfers_out': 13666,
- u'transfers_out_event': 74,
- u'type_name': u'Goalkeeper',
- u'web_name': u'Fabianski'}</pre></div>
-</div>
+
+<pre>
+{u&apos;added&apos;: u&apos;2013-07-15T13:21:12 UTC+0000&apos;,
+ u&apos;code&apos;: 37096,
+ u&apos;current_fixture&apos;: u&apos;Crystal Palace (H)&apos;,
+ u&apos;element_type_id&apos;: 1,
+ u&apos;event_cost&apos;: 42,
+ u&apos;event_explain&apos;: [[u&apos;Minutes played&apos;, 0, 0]],
+ u&apos;event_points&apos;: 0,
+ u&apos;event_total&apos;: 0,
+ u&apos;first_name&apos;: u&apos;Lukasz&apos;,
+ u&apos;fixture_history&apos;: {u&apos;all&apos;: [[u&apos;17 Aug 15:00&apos;,
+    1,
+    u&apos;AVL(H) 1-3&apos;,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    45,
+    0],
+   [u&apos;24 Aug 12:45&apos;,
+    2,
+    u&apos;FUL(A) 3-1&apos;,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -1322,
+    45,
+    0],
+   [u&apos;01 Sep 16:00&apos;,
+    3,
+    u&apos;TOT(H) 1-0&apos;,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -1350,
+    45,
+    0],
+   [u&apos;14 Sep 15:00&apos;,
+    4,
+    u&apos;SUN(A) 3-1&apos;,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -1259,
+    44,
+    0],
+   [u&apos;22 Sep 13:30&apos;,
+    5,
+    u&apos;STK(H) 3-1&apos;,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -1091,
+    44,
+    0],
+   [u&apos;28 Sep 17:30&apos;,
+    6,
+    u&apos;SWA(A) 2-1&apos;,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -852,
+    44,
+    0],
+   [u&apos;06 Oct 16:00&apos;,
+    7,
+    u&apos;WBA(A) 1-1&apos;,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -712,
+    44,
+    0],
+   [u&apos;19 Oct 15:00&apos;,
+    8,
+    u&apos;NOR(H) 4-1&apos;,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -388,
+    44,
+    0],
+   [u&apos;26 Oct 12:45&apos;,
+    9,
+    u&apos;CRY(A) 2-0&apos;,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -343,
+    43,
+    0],
+   [u&apos;02 Nov 17:30&apos;,
+    10,
+    u&apos;LIV(H) 2-0&apos;,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -218,
+    43,
+    0],
+   [u&apos;10 Nov 16:10&apos;,
+    11,
+    u&apos;MUN(A) 0-1&apos;,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -247,
+    43,
+    0],
+   [u&apos;23 Nov 15:00&apos;,
+    12,
+    u&apos;SOU(H) 2-0&apos;,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -221,
+    43,
+    0],
+   [u&apos;30 Nov 15:00&apos;,
+    13,
+    u&apos;CAR(A) 3-0&apos;,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -257,
+    43,
+    0],
+   [u&apos;04 Dec 19:45&apos;,
+    14,
+    u&apos;HUL(H) 2-0&apos;,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -283,
+    43,
+    0],
+   [u&apos;08 Dec 16:00&apos;,
+    15,
+    u&apos;EVE(H) 1-1&apos;,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -251,
+    43,
+    0],
+   [u&apos;14 Dec 12:45&apos;,
+    16,
+    u&apos;MCI(A) 3-6&apos;,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -213,
+    42,
+    0],
+   [u&apos;23 Dec 20:00&apos;,
+    17,
+    u&apos;CHE(H) 0-0&apos;,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -123,
+    42,
+    0],
+   [u&apos;26 Dec 15:00&apos;,
+    18,
+    u&apos;WHU(A) 3-1&apos;,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -105,
+    42,
+    0],
+   [u&apos;29 Dec 13:30&apos;,
+    19,
+    u&apos;NEW(A) 1-0&apos;,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -103,
+    42,
+    0],
+   [u&apos;01 Jan 15:00&apos;,
+    20,
+    u&apos;CAR(H) 2-0&apos;,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -83,
+    42,
+    0],
+   [u&apos;13 Jan 20:00&apos;,
+    21,
+    u&apos;AVL(A) 2-1&apos;,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -17,
+    42,
+    0],
+   [u&apos;18 Jan 15:00&apos;,
+    22,
+    u&apos;FUL(H) 2-0&apos;,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -32,
+    42,
+    0],
+   [u&apos;28 Jan 19:45&apos;,
+    23,
+    u&apos;SOU(A) 2-2&apos;,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -35,
+    42,
+    0],
+   [u&apos;02 Feb 16:00&apos;,
+    24,
+    u&apos;CRY(H) 2-0&apos;,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    -6,
+    42,
+    0]],
+  u&apos;summary&apos;: [[22, u&apos;FUL (H)&apos;, 0], [23, u&apos;SOU (A)&apos;, 0], [24, u&apos;CRY (H)&apos;, 0]]},
+ u&apos;fixtures&apos;: {u&apos;all&apos;: [[u&apos;08 Feb 12:45&apos;, u&apos;Gameweek 25&apos;, u&apos;Liverpool (A)&apos;],
+   [u&apos;12 Feb 19:45&apos;, u&apos;Gameweek 26&apos;, u&apos;Man Utd (H)&apos;],
+   [u&apos;22 Feb 15:00&apos;, u&apos;Gameweek 27&apos;, u&apos;Sunderland (H)&apos;],
+   [u&apos;01 Mar 15:00&apos;, u&apos;Gameweek 28&apos;, u&apos;Stoke City (A)&apos;],
+   [u&apos;08 Mar 15:00&apos;, u&apos;Gameweek 29&apos;, u&apos;Swansea (H)&apos;],
+   [u&apos;16 Mar 16:00&apos;, u&apos;Gameweek 30&apos;, u&apos;Tottenham (A)&apos;],
+   [u&apos;22 Mar 12:45&apos;, u&apos;Gameweek 31&apos;, u&apos;Chelsea (A)&apos;],
+   [u&apos;29 Mar 17:30&apos;, u&apos;Gameweek 32&apos;, u&apos;Man City (H)&apos;],
+   [u&apos;05 Apr 15:00&apos;, u&apos;Gameweek 33&apos;, u&apos;Everton (A)&apos;],
+   [u&apos;12 Apr 15:00&apos;, u&apos;Gameweek 34&apos;, u&apos;West Ham (H)&apos;],
+   [u&apos;19 Apr 15:00&apos;, u&apos;Gameweek 35&apos;, u&apos;Hull City (A)&apos;],
+   [u&apos;26 Apr 15:00&apos;, u&apos;Gameweek 36&apos;, u&apos;Newcastle (H)&apos;],
+   [u&apos;03 May 15:00&apos;, u&apos;Gameweek 37&apos;, u&apos;West Brom (H)&apos;],
+   [u&apos;11 May 15:00&apos;, u&apos;Gameweek 38&apos;, u&apos;Norwich (A)&apos;]],
+  u&apos;summary&apos;: [[25, u&apos;LIV (A)&apos;, u&apos;08 Feb 12:45&apos;],
+   [26, u&apos;MUN (H)&apos;, u&apos;12 Feb 19:45&apos;],
+   [27, u&apos;SUN (H)&apos;, u&apos;22 Feb 15:00&apos;]]},
+ u&apos;form&apos;: 0.0,
+ u&apos;id&apos;: 1,
+ u&apos;in_dreamteam&apos;: False,
+ u&apos;last_season_points&apos;: 0,
+ u&apos;max_cost&apos;: 45,
+ u&apos;min_cost&apos;: 42,
+ u&apos;news&apos;: u&apos;&apos;,
+ u&apos;news_added&apos;: None,
+ u&apos;news_return&apos;: None,
+ u&apos;news_updated&apos;: None,
+ u&apos;next_fixture&apos;: u&apos;Liverpool (A)&apos;,
+ u&apos;now_cost&apos;: 42,
+ u&apos;original_cost&apos;: 45,
+ u&apos;photo_mobile_url&apos;: u&apos;http://cdn.ismfg.net/static/plfpl/img/shirts/photos/37096.jpg&apos;,
+ u&apos;points_per_game&apos;: 0.0,
+ u&apos;season_history&apos;: [[u&apos;2007/08&apos;,
+   248,
+   0,
+   0,
+   0,
+   2,
+   0,
+   0,
+   0,
+   0,
+   0,
+   8,
+   0,
+   0,
+   0,
+   46,
+   15],
+  [u&apos;2008/09&apos;, 463, 0, 0, 0, 10, 0, 0, 0, 0, 0, 18, 0, 0, 0, 46, 20],
+  [u&apos;2009/10&apos;, 360, 0, 0, 0, 5, 0, 0, 0, 1, 0, 11, 0, 0, 0, 49, 15],
+  [u&apos;2010/11&apos;, 1260, 0, 1, 5, 14, 0, 0, 0, 0, 0, 33, 2, 0, 0, 45, 55],
+  [u&apos;2011/12&apos;, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 53, 0],
+  [u&apos;2012/13&apos;, 360, 0, 0, 1, 3, 0, 0, 0, 0, 0, 7, 0, 57, 0, 42, 13]],
+ u&apos;second_name&apos;: u&apos;Fabianski&apos;,
+ u&apos;selected&apos;: 17295,
+ u&apos;selected_by&apos;: u&apos;0.5&apos;,
+ u&apos;shirt_image_url&apos;: u&apos;http://cdn.ismfg.net/static/plfpl/img/shirts/shirt_1_1.png&apos;,
+ u&apos;shirt_mobile_image_url&apos;: u&apos;http://cdn.ismfg.net/static/plfpl/img/shirts/mobile/shirt_1_1.png&apos;,
+ u&apos;squad_number&apos;: None,
+ u&apos;status&apos;: u&apos;a&apos;,
+ u&apos;team_code&apos;: 37096,
+ u&apos;team_id&apos;: 1,
+ u&apos;team_name&apos;: u&apos;Arsenal&apos;,
+ u&apos;total_points&apos;: 0,
+ u&apos;transfers_in&apos;: 4112,
+ u&apos;transfers_in_event&apos;: 31,
+ u&apos;transfers_out&apos;: 13666,
+ u&apos;transfers_out_event&apos;: 74,
+ u&apos;type_name&apos;: u&apos;Goalkeeper&apos;,
+ u&apos;web_name&apos;: u&apos;Fabianski&apos;}
+</pre>
 
 </div>
 </div>
@@ -2544,16 +2518,19 @@ In&nbsp;[2]:
 </div>
 </div>
 
-</div>
+</div><aside class="notes">
+    
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>I've created an ipython cell and loaded the player data that I downloaded with requests, then printed the first player's JSON data.</p>
 <p>When you execute a cell in Ipython notebook, the variables you create are available for your use later on. Here, we've loaded the pickle file into a variable <code>players</code>, which we'll continue to use throughout the spreadsheet.</p>
 <p>It looks like the object contains all the player information we need, primarily in a big <code>fixture_history</code> array that contains big, unlabelled, arrays. It contains their cost, the amount of points they've scored overall, their name, a list of all the games they've played, and a list of all their upcoming games.</p>
 </div>
+    </aside><div style=display:none>
+    
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[5]:
+In&nbsp;[6]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="o">%</span><span class="k">matplotlib</span> <span class="n">inline</span>
@@ -2570,10 +2547,11 @@ In&nbsp;[5]:
 </div>
 
 </div>
+    </div></section><section>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[7]:
+In&nbsp;[25]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">points</span> <span class="o">=</span> <span class="p">{}</span>
@@ -2963,15 +2941,17 @@ KryZQURERERERERJhTcziIiIiIiIiCip/A/jDx2tVY3SrgAAAABJRU5ErkJggg==
 </div>
 </div>
 
-</div>
+</div><aside class="notes">
+    
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The first experiment I did asked: how many fantasy points are scored by players in each position?</p>
-<p>So I wrote this code to iterate through all players, discard the games in which they didn't play, and store how many points they scored in a dictionary keyed on their position.</p>
+<p>The first experiment I did asked: how many points are scored by players in each position?</p>
+<p>So I wrote this code to iterates through all players, discard the games in which they didn't play, and store how many points they scored in a dictionary keyed on their position.</p>
 <p>Then I used matplotlib to turn that dictionary into a series of four graphs.</p>
 <p>This graph isn't that helpful, so don't bother squinting at it to find out what it says.</p>
 <p>The point is that, with a very small amount of code, I was able to run an experiment, make graphs, and draw conclusions about my data.</p>
-<p>IPython makes this all very easy by allowing you to rapidly iterate on your code, and showing you graphical output right next to your textual input. If you mess up, just fix the text in the cell, and run it again.</p>
+<p>Ipython makes this all very easy by allowing you to rapidly iterate on your code, and showing you graphical output right next to your textual input. If you mess up, just fix the text in the cell, and run it again.</p>
 </div>
+    </aside></section><section>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
@@ -3607,11 +3587,12 @@ RU5ErkJggg==
 </div>
 </div>
 
-</div>
+</div><div style=display:none>
+    
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[9]:
+In&nbsp;[27]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">avg_opponent</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">avgs</span><span class="o">.</span><span class="n">values</span><span class="p">())</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">avgs</span><span class="p">))</span>
@@ -3621,6 +3602,8 @@ In&nbsp;[9]:
 </div>
 
 </div>
+    </div><aside class="notes">
+    
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Next I asked another question: How many points does each team allow their opponents, on average?</p>
 <p>So, again I iterated through all the player data. This time I saved the amount of points each player scored to a dictionary keyed by their opponent, then made a graph of the result.</p>
@@ -3628,10 +3611,12 @@ In&nbsp;[9]:
 <p>A game against the weakest team is worth nearly <em>double</em>, on average, to a game against the strongest!</p>
 <p>This experiment demonstrated that a player's opponent in a fantasy game seems to be an important factor in how many points we can expect them to score in the future. We'll see later how this factors into our player model, and therefore what players the computer is going to select for us.</p>
 </div>
+    </aside><div style=display:none>
+    
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[10]:
+In&nbsp;[29]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">team_abbreviations</span> <span class="o">=</span> <span class="p">{</span>
@@ -3672,10 +3657,11 @@ In&nbsp;[10]:
 </div>
 
 </div>
+    </div></section><section>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[11]:
+In&nbsp;[30]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="k">class</span> <span class="nc">Player</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -3729,7 +3715,8 @@ In&nbsp;[11]:
 </div>
 </div>
 
-</div>
+</div><aside class="notes">
+    
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now I had the data loaded, and was able to quickly ask and answer questions, but I had all kinds of magic numbers in the code.</p>
 <p>I needed to remember that a player's opponent is the 2nd field in a game array, his minutes is the 3rd, and his points is the 19th. It would be a lot nicer if I could wrap the player data in an object with convenient names for those fields.</p>
@@ -3737,10 +3724,11 @@ In&nbsp;[11]:
 <p>I don't want to go through this big hunk of code in detail, so instead I'll just tell you that the super nice thing about IPython Notebook is that you can code iteratively. When I actually created this code, it started as a very small and simple player class, with just his name, value, and points. As I needed more of the raw data, I went back to this cell in the notebook, edited the code, and re-ran it.</p>
 <p>You don't have to get it right the first time, so it's very low stress.</p>
 </div>
+    </aside></section><section>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[12]:
+In&nbsp;[31]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">p</span> <span class="o">=</span> <span class="n">find_player</span><span class="p">(</span><span class="s">&#39;Van Persie&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
@@ -3778,15 +3766,17 @@ Forward
 </div>
 </div>
 
-</div>
+</div><aside class="notes">
+    
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Here I'm just playing around a bit with the player object I showed you in the previous slide. IPython auto-completes fields for me, so I can easily run quick sanity checks to make sure that I get the data I expect from the player object.</p>
+<p>Here I'm just playing around a bit with the player object I showed you in the previous slide. Ipython auto-completes fields for me, so I can easily run quick sanity checks to make sure that I get the data I expect from the player object.</p>
 <p>Each player now has attributes for his name, position, and cost, an array of past and upcoming games, and other important information. It's a big step up from the raw array we were using before.</p>
 </div>
+    </aside></section><section>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[13]:
+In&nbsp;[11]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">homeaway</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;A&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&quot;H&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
@@ -3974,41 +3964,49 @@ Kg4ck4oDx6TiwDGpOHBMKg4ck4oDx6T6P9HGNPmcBWdpAAAAAElFTkSuQmCC
 </div>
 </div>
 
-</div>
+</div><aside class="notes">
+    
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now it was even easier to run a third experiment: how valuable is homefield advantage?</p>
+<p>Now it was even easier to run a third experiment: how valuable is homefiled advantage?</p>
 <p>So I wrote code to once again iterate through the players (using the objects this time), store their points in a dictionary keyed on whether the game was home or away, and display the results.</p>
 <p>The result was that homefield advantage looks like it's worth about .3 fantasy points. Less important than who you play (which was worth almost 2 points, remember), but still worth thinking about.</p>
 </div>
+    </aside></section>
+    </section><section>
+    <section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="images/timhoward.png" />
 </center>
-</div>
+</div><aside class="notes">
+    
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>At this point, I stopped playing around in IPython to think a bit. Now I had my players where I could get at them in a handy data structure, the ability to run experiments on them, and I'd found two important factors in predicting how many points they would score.</p>
+<p>At this point, I stopped playing around in ipython to think a bit. Now I had my players where I could get at them in a handy data structure, the ability to run experiments on them, and I'd found two important factors in predicting how many points they would score.</p>
 <p>I knew that their opponent in upcoming games was very important, and whether the game was at home or away was important, but less so.</p>
 <p>The next thing I needed to do was figure out a way to model a player's future predicted points.</p>
 <p>Once I had that, I'd be most of the way to picking a team automatically. I'd just need to ask the computer to solve for a team that maximizes expected value while costing less than the amount of money I had to spend.</p>
 <p>So I came up with a simple model, figuring that I could go back and change it if it didn't seem to generate a good team.</p>
 </div>
+    </aside></section><section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 class="eq">
 <span class="math">\(ev = \sum_{i=0}^5 opp_i + home_i + adj\_avg\)</span>
 </h2>
-</div>
+</div><aside class="notes">
+    
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In this simple model, each player's expected value is the sum of three factors.</p>
+<p>In the model I came up, each player's expected value is the sum of three factors.</p>
 <p>The first is a factor to compensate for their opponent; they gain points is their opponent is generous and lose them if they're stingy.</p>
 <p>The second is a factor for homefield advantage; a player gains expected fantasy points for being at home and loses them for being away.</p>
 <p>The third is simply their past average score, adjusted for those same opponent and homefield advantage factors. So if their previous game was at home, we'd subtract some points which were presumably due to that homefield advantage. If it was away, we'd add them, hoping to neutralize its effect somewhat.</p>
 <p>I chose to look 5 games into the future for each player when calculating their expected value. That was bascially just an off-the-cuff decision I made trying to look a bit into the future without projecting too far out.</p>
 <p>This is a very simple model of player performance, and there's lots of things we could try to improve on, but it's a nice easy function to implement, that I figured would get me to a reasonable answer.</p>
 </div>
+    </aside></section><section>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[14]:
+In&nbsp;[15]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">adjusted_score</span><span class="p">(</span><span class="n">game</span><span class="p">):</span>
@@ -4060,11 +4058,12 @@ In&nbsp;[14]:
 </div>
 </div>
 
-</div>
+</div><div style=display:none>
+    
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[15]:
+In&nbsp;[16]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="c"># re-create our player objects, this time with our monkey-patched expected points function.</span>
@@ -4083,7 +4082,7 @@ In&nbsp;[15]:
 
 
 <div class="hbox output_area"><div class="prompt output_prompt">
-    Out[15]:</div>
+    Out[16]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 
 
@@ -4098,13 +4097,18 @@ In&nbsp;[15]:
 </div>
 
 </div>
+    </div><aside class="notes">
+    
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This code implements the model we just presented. It's easiest to read from the bottom up; let's start with <code>expected_points</code>.</p>
 <p>This function takes a player, gets their adjusted average fantasy points for the season so far, then returns the average expected points of their next 5 games, adjusted for opponent and homefield advantage.</p>
 <p>To do that adjustment, we have a pair of functions, <code>adjusted_score</code> and <code>game_value</code>, each of which simply takes a game and returns its adjusted value.</p>
 <p>We run the <code>expected_points</code> function a couple of times at the end just to make sure it's sensible.</p>
-<p>In this case, you see that Jordan Mutch is expected to score about 3 and a half points per game over the next 5 games, Luis Suárez 8, and the model expects that Yaya Sanogo is worth negative points. I went and looked at the scores those players have been posting, and who their upcoming opponents are, and those results seem reasonable given that information.</p>
+<p>In this case, you see that Mesut Özil is expected to score about 5 points per game over the next 5 games, Luis Suárez 8, and Yaya Touré about 6 and a half. I went and looked at the scores those players have been posting, and who their upcoming opponents are, and those results seem reasonable given that information.</p>
 </div>
+    </aside></section>
+    </section><section>
+    <section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Given the constraints:</p>
 <ul>
@@ -4115,13 +4119,15 @@ In&nbsp;[15]:
 <li>3 forwards</li>
 </ul>
 <p><strong>Maximize expected team value</strong></p>
-</div>
+</div><aside class="notes">
+    
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>So now we have a player model and it's time to construct a team. Let's look again at what we're trying to do.</p>
 <p>I needed to pick a team of 15 players which costs less than £100 and fills up all the required player positions. Given those constraints, I wanted to pick the team that maximizes my expected fantasy point total.</p>
 <p>This sort of problem, where we're trying to maximize or minimize some quantity with regard to a series of linear constraints is known as a <em>linear optimization</em> problem.</p>
 <p>I had planned to use Scipy to solve the problem, but they don't have a very simple way to solve problems like this. Instead, after some googling, I turned to the special-purpose <em>lp_solve</em> program.</p>
 </div>
+    </aside></section><section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Given this simple optimization problem:</p>
 <pre id="bigger">
@@ -4130,7 +4136,8 @@ x2 >= 1
 x1 + x2 >= 2
 minimize x1 + x2 where x1 is an integer
 </pre>
-</div>
+</div><aside class="notes">
+    
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's start by giving ourselves a very simple linear optimization problem, and solving it with lp_solve.</p>
 <p>Take a look at this problem, and take a second to understand it. We have three constraints:</p>
@@ -4142,6 +4149,7 @@ minimize x1 + x2 where x1 is an integer
 <p>and we want to minimize the sum of x1 + x2 given those constraints.</p>
 <p>It should be clear the sum of x1 and x2 is minimized when x1 == x2 == 1.</p>
 </div>
+    </aside></section><section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>lp_solve takes a file that looks like:</p>
 <pre id="bigger">
@@ -4160,11 +4168,13 @@ Actual values of the variables:
 x1                              1
 x2                              1
 </pre>
-</div>
+</div><aside class="notes">
+    
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>To solve this problem with lp_solve, we create a file in lp_solve format, as shown on the top here. It starts by telling lp_solve what function to minimize or maximize, and follows it with a series of constraints; one per line. Finally, we declare the type of all the variables we've used.</p>
 <p>When we run lp_solve, it parses the file, minimizes the function we've given it, and returns the value of each variable.</p>
 </div>
+    </aside></section><section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <pre id="biggerish">
 max: 5.6 gk1 + 4.3 mf2 + …;  /* maximize expected points */
@@ -4174,7 +4184,8 @@ d3 + d4 + d23 + … = 5;       /* limit to 5 defenders     */
 …                            /* repeat for all positions */
 bin gk1, mf2, d3, f4, d5, …; /* all variables are binary */
 </pre>
-</div>
+</div><aside class="notes">
+    
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The file I ended up passing to lp_solve isn't a whole lot different from that simple example; I just translated the fantasy football problem into a maximization problem using the values we already discussed.</p>
 <p>The value we want to maximize is the expected point total of the players we choose.</p>
@@ -4184,10 +4195,11 @@ bin gk1, mf2, d3, f4, d5, …; /* all variables are binary */
 <p>The output of lp_solve would be a 1 if the player was selected for the team and a zero if they weren't.</p>
 <p>That's why we're able to simply add up the player counts to get the position constraints; the player is a 1 if they've been selected and a zero otherwise.</p>
 </div>
+    </aside></section><section>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[16]:
+In&nbsp;[17]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">objective_function</span><span class="p">():</span>
@@ -4200,16 +4212,18 @@ In&nbsp;[16]:
 </div>
 </div>
 
-</div>
+</div><aside class="notes">
+    
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>So my next step was to create the lp_solve file</p>
 <p>First, I wrote a function to output a maximization criteria. All it does is iterate through all players and join each player together, weighted by their expected point value.</p>
 <p>This creates the expression lp_solve will be trying to maximize.</p>
 </div>
+    </aside></section><section>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[17]:
+In&nbsp;[18]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">cost_constraint</span><span class="p">(</span><span class="n">max_price</span><span class="p">):</span>
@@ -4222,14 +4236,16 @@ In&nbsp;[17]:
 </div>
 </div>
 
-</div>
+</div><aside class="notes">
+    
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Next, I wrote a very similar function to add a cost constraint. Again it loops through all players, but this time it weights them by their cost.</p>
 </div>
+    </aside></section><section>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[18]:
+In&nbsp;[19]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">position_constraints</span><span class="p">():</span>
@@ -4257,16 +4273,19 @@ In&nbsp;[18]:
 </div>
 </div>
 
-</div>
+</div><aside class="notes">
+    
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Finally, we add a constraint for each position. This code writes four constraints, which together limit the solver to choosing 2 goalkeepers, 5 defenders, 5 midfielders, and 3 forwards.</p>
 <p>It does so by building a list of each player at each position, and limiting the sum of that position to the appropriate number.</p>
 <p>Each player variable is a binary value; 1 if they're on the team or 0 if they're not, so the ability to add them up to limit the number of players comes in handy.</p>
 </div>
+    </aside><div style=display:none>
+    
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[19]:
+In&nbsp;[20]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="c">#create a buffer to hold all the constraints</span>
@@ -4288,10 +4307,11 @@ In&nbsp;[19]:
 </div>
 
 </div>
+    </div></section><section>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[20]:
+In&nbsp;[24]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">subprocess</span><span class="o">,</span> <span class="nn">re</span>
@@ -4303,7 +4323,7 @@ In&nbsp;[20]:
     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Unable to find player&quot;</span><span class="p">)</span>
     
 <span class="k">def</span> <span class="nf">return_team</span><span class="p">(</span><span class="n">lp</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;run lp_solve and return a list of player objects&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;run lp_solve ands return a list of player objects&quot;&quot;&quot;</span>
     <span class="n">cmd</span> <span class="o">=</span> <span class="s">&quot;echo &#39;</span><span class="si">%s</span><span class="s">&#39; | lp_solve&quot;</span> <span class="o">%</span> <span class="n">lp</span>
     <span class="n">val</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
     <span class="n">get_id</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">l</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">&quot;^\w+?(\d+)&quot;</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
@@ -4321,7 +4341,7 @@ In&nbsp;[20]:
 
 
 <div class="hbox output_area"><div class="prompt output_prompt">
-    Out[20]:</div>
+    Out[24]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 
 
@@ -4349,22 +4369,38 @@ In&nbsp;[20]:
 </div>
 </div>
 
-</div>
+</div><aside class="notes">
+    
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Finally we take our constraints, pass them to lp_solve, parse the results, and it outputs a team!</p>
 <p>Some improvments immediately suggest themselves; for example, lp_solve has chosen 5 players from the same team.</p>
 <p>After tweaking the model and the constraints a bit, I took the team selected by lp_solve and put it into play. How'd it do?</p>
 </div>
+    </aside></section><section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <center>
 <img src="images/mourinho-waving-finger.gif" />
 </center>
-</div>
+</div><aside class="notes">
+    
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The results were... OK. The computer definitely chose a better team than I had, but by the time I used it I had dug myself a pretty big hole.</p>
 <p>It doesn't help that I'm more interested in writing code than I am in maintaining my fantasy football team, so I think I'm going to have to kiss my $5 goodbye.</p>
 <p>In exchange though, I had a lot of fun playing around with ipython, solved a fun problem, and ended up with a talk. Not a bad outcome.</p>
 <p>Thanks.</p>
+</div>
+    </aside><div style=display:none>
+    
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[34]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="o">%</span><span class="k">run</span> <span class="n">talktools</span>
+</pre></div>
+
+</div>
 </div>
 
 <div class="vbox output_wrapper">
@@ -4530,6 +4566,102 @@ In&nbsp;[20]:
 </div>
 
 </div>
-</div></div>
+    </div><div style=display:none>
+    
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+    </div></section>
+    </section>
+</div>
+</div>
+
+<!--
+Uncomment the following block and the addthis_widget.js (see below inside dependencies)
+to get enable social buttons.
+-->
+
+<!--
+<div class="addthis_toolbox addthis_floating_style addthis_32x32_style" style="left:20px;top:20px;">
+<a class="addthis_button_twitter"></a>
+<a class="addthis_button_google_plusone_share"></a>
+<a class="addthis_button_linkedin"></a>
+<a class="addthis_button_facebook"></a>
+<a class="addthis_button_more"></a>
+</div>
+-->
+
+<script src="//cdn.jsdelivr.net/reveal.js/2.4.0/lib/js/head.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/reveal.js/2.4.0/js/reveal.js"></script>
+
+<script>
+
+// Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+controls: true,
+progress: true,
+history: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+{ src: "//cdn.jsdelivr.net/reveal.js/2.4.0/lib/js/classList.js", condition: function() { return !document.body.classList; } },
+{ src: "//cdn.jsdelivr.net/reveal.js/2.4.0/plugin/highlight/highlight.js", async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+{ src: "//cdn.jsdelivr.net/reveal.js/2.4.0/plugin/notes/notes.js", async: true, condition: function() { return !!document.body.classList; } }
+// { src: 'http://s7.addthis.com/js/300/addthis_widget.js', async: true},
+]
+});
+</script>
+
+<!-- MathJax configuration -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+    },
+    displayAlign: 'left', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script>
+<!-- End of mathjax configuration -->
+
+<script>
+//  We wait for the onload function to load MathJax after the page is completely loaded.
+//  MathJax is loaded 1 unit of time after the page is ready.
+//  This hack prevent problems when you load multiple js files (i.e. social button from addthis).
+//
+window.onload = function () {
+  setTimeout(function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS_HTML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  },1)
+}
+</script>
+
+<script>
+Reveal.addEventListener( 'slidechanged', function( event ) {
+MathJax.Hub.Rerender(event.currentSlide);
+});
+</script>
+
 </body>
+
 </html>
