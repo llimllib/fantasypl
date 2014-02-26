@@ -1693,7 +1693,7 @@ init_mathjax();
 </head>
 <body>
 
-<div class="text_cell_render border-box-sizing rendered_html">
+<div class="text_cell_render border-box-sizing rendered_html slide">
 <h1>
 Choosing a Fantasy Football Team
 </h1>
@@ -1724,7 +1724,7 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+e+'<\/'+'a'+'>');
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>A couple months ago, my friend suckered me into a fantasy football league.</p>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
+<div class="text_cell_render border-box-sizing rendered_html slide">
 <center>
 <img src="images/thisnotthis.png" />
 </center>
@@ -1734,7 +1734,7 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+e+'<\/'+'a'+'>');
 <p>I <em>am</em> competitive though, so I agreed to play and wanted to do well enough not to embarrass myself.</p>
 <p>The first thing I had to do was to figure out how the game works.</p>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
+<div class="text_cell_render border-box-sizing rendered_html slide">
 <center>
 <img src="images/screen.png" />
 </center>
@@ -1743,7 +1743,7 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+e+'<\/'+'a'+'>');
 <p>In Fantasy Football, you have a team of 15 British Premier League players; 2 goalkeepers, 5 defenders, 5 midfielders, and 3 forwards.</p>
 <p>Each week, you pick 11 starters and 4 subs. Your fantasy team scores points based on how well your players do: goals, assists, saves and preventing the other team from scoring all gain you fantasy points.</p>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
+<div class="text_cell_render border-box-sizing rendered_html slide">
 <h1 id="you-have-a-limited-budget">You have a limited budget</h1>
 <center>
 <img src="images/bank.jpg" />
@@ -1759,7 +1759,7 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+e+'<\/'+'a'+'>');
 <p>The cost for each player ranges from about £4 to 14, based on how many other people have bought the player, and is not fixed. If a player scores more fantasy points, his price will go up; fewer and his price goes down.</p>
 <p>Each week, you're allowed to trade out one of your players for a different player as long as you have enough money to buy the new player. Twice a season, you're allowed to play a wild card that allows you to trade out your entire team.</p>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
+<div class="text_cell_render border-box-sizing rendered_html slide">
 <center>
 <h1>
 That sounds like an optimization problem...
@@ -1774,7 +1774,7 @@ I bet I could solve that with code
 <p>Once I'd picked up the rules, I started playing around with building up a team. I managed to build one manually, but it was a pain and I did so pretty poorly. I didn't really know the players, or the strategy, so I had to make some wild guesses.</p>
 <p>A few weeks into the season, my team stunk, but I was getting the hang of things. I was frustrated that my team wasn't very good, so I decided to see if I could get my computer to pick a better team for me than the one I had picked myself.</p>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
+<div class="text_cell_render border-box-sizing rendered_html slide">
 <center>
 <img src="images/api.png" />
 </center>
@@ -1783,7 +1783,7 @@ I bet I could solve that with code
 <p>Once I'd decided I was going to use my computer, the first thing I needed to do is gather data for all the players in the Premier League. There's no official API, so I opened up my trusty Chrome inspector and did some digging.</p>
 <p>After a brief search, I found an endpoint called /web/api, which looked like it output JSON. Awesome!</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
+<div class="cell border-box-sizing code_cell vbox slide">
 <div class="input hbox">
 <div class="prompt input_prompt">
 In&nbsp;[]:
@@ -2542,7 +2542,7 @@ In&nbsp;[2]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[6]:
+In&nbsp;[5]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="o">%</span><span class="k">matplotlib</span> <span class="n">inline</span>
@@ -2562,7 +2562,7 @@ In&nbsp;[6]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[25]:
+In&nbsp;[7]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">points</span> <span class="o">=</span> <span class="p">{}</span>
@@ -2954,12 +2954,12 @@ KryZQURERERERERJhTcziIiIiIiIiCip/A/jDx2tVY3SrgAAAABJRU5ErkJggg==
 
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The first experiment I did asked: how many points are scored by players in each position?</p>
-<p>So I wrote this code to iterates through all players, discard the games in which they didn't play, and store how many points they scored in a dictionary keyed on their position.</p>
+<p>The first experiment I did asked: how many fantasy points are scored by players in each position?</p>
+<p>So I wrote this code to iterate through all players, discard the games in which they didn't play, and store how many points they scored in a dictionary keyed on their position.</p>
 <p>Then I used matplotlib to turn that dictionary into a series of four graphs.</p>
 <p>This graph isn't that helpful, so don't bother squinting at it to find out what it says.</p>
 <p>The point is that, with a very small amount of code, I was able to run an experiment, make graphs, and draw conclusions about my data.</p>
-<p>Ipython makes this all very easy by allowing you to rapidly iterate on your code, and showing you graphical output right next to your textual input. If you mess up, just fix the text in the cell, and run it again.</p>
+<p>IPython makes this all very easy by allowing you to rapidly iterate on your code, and showing you graphical output right next to your textual input. If you mess up, just fix the text in the cell, and run it again.</p>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
@@ -3600,7 +3600,7 @@ RU5ErkJggg==
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[27]:
+In&nbsp;[9]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">avg_opponent</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">avgs</span><span class="o">.</span><span class="n">values</span><span class="p">())</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">avgs</span><span class="p">))</span>
@@ -3620,7 +3620,7 @@ In&nbsp;[27]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[29]:
+In&nbsp;[10]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">team_abbreviations</span> <span class="o">=</span> <span class="p">{</span>
@@ -3664,7 +3664,7 @@ In&nbsp;[29]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[30]:
+In&nbsp;[11]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="k">class</span> <span class="nc">Player</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -3729,7 +3729,7 @@ In&nbsp;[30]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[31]:
+In&nbsp;[12]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">p</span> <span class="o">=</span> <span class="n">find_player</span><span class="p">(</span><span class="s">&#39;Van Persie&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
@@ -3769,13 +3769,13 @@ Forward
 
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Here I'm just playing around a bit with the player object I showed you in the previous slide. Ipython auto-completes fields for me, so I can easily run quick sanity checks to make sure that I get the data I expect from the player object.</p>
+<p>Here I'm just playing around a bit with the player object I showed you in the previous slide. IPython auto-completes fields for me, so I can easily run quick sanity checks to make sure that I get the data I expect from the player object.</p>
 <p>Each player now has attributes for his name, position, and cost, an array of past and upcoming games, and other important information. It's a big step up from the raw array we were using before.</p>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[11]:
+In&nbsp;[13]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="n">homeaway</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;A&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&quot;H&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
@@ -3965,7 +3965,7 @@ Kg4ck4oDx6TiwDGpOHBMKg4ck4oDx6T6P9HGNPmcBWdpAAAAAElFTkSuQmCC
 
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now it was even easier to run a third experiment: how valuable is homefiled advantage?</p>
+<p>Now it was even easier to run a third experiment: how valuable is homefield advantage?</p>
 <p>So I wrote code to once again iterate through the players (using the objects this time), store their points in a dictionary keyed on whether the game was home or away, and display the results.</p>
 <p>The result was that homefield advantage looks like it's worth about .3 fantasy points. Less important than who you play (which was worth almost 2 points, remember), but still worth thinking about.</p>
 </div>
@@ -3975,7 +3975,7 @@ Kg4ck4oDx6TiwDGpOHBMKg4ck4oDx6T6P9HGNPmcBWdpAAAAAElFTkSuQmCC
 </center>
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>At this point, I stopped playing around in ipython to think a bit. Now I had my players where I could get at them in a handy data structure, the ability to run experiments on them, and I'd found two important factors in predicting how many points they would score.</p>
+<p>At this point, I stopped playing around in IPython to think a bit. Now I had my players where I could get at them in a handy data structure, the ability to run experiments on them, and I'd found two important factors in predicting how many points they would score.</p>
 <p>I knew that their opponent in upcoming games was very important, and whether the game was at home or away was important, but less so.</p>
 <p>The next thing I needed to do was figure out a way to model a player's future predicted points.</p>
 <p>Once I had that, I'd be most of the way to picking a team automatically. I'd just need to ask the computer to solve for a team that maximizes expected value while costing less than the amount of money I had to spend.</p>
@@ -3987,7 +3987,7 @@ Kg4ck4oDx6TiwDGpOHBMKg4ck4oDx6T6P9HGNPmcBWdpAAAAAElFTkSuQmCC
 </h2>
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In the model I came up, each player's expected value is the sum of three factors.</p>
+<p>In this simple model, each player's expected value is the sum of three factors.</p>
 <p>The first is a factor to compensate for their opponent; they gain points is their opponent is generous and lose them if they're stingy.</p>
 <p>The second is a factor for homefield advantage; a player gains expected fantasy points for being at home and loses them for being away.</p>
 <p>The third is simply their past average score, adjusted for those same opponent and homefield advantage factors. So if their previous game was at home, we'd subtract some points which were presumably due to that homefield advantage. If it was away, we'd add them, hoping to neutralize its effect somewhat.</p>
@@ -3997,7 +3997,7 @@ Kg4ck4oDx6TiwDGpOHBMKg4ck4oDx6T6P9HGNPmcBWdpAAAAAElFTkSuQmCC
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[15]:
+In&nbsp;[14]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">adjusted_score</span><span class="p">(</span><span class="n">game</span><span class="p">):</span>
@@ -4053,7 +4053,7 @@ In&nbsp;[15]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[16]:
+In&nbsp;[15]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="c"># re-create our player objects, this time with our monkey-patched expected points function.</span>
@@ -4072,7 +4072,7 @@ In&nbsp;[16]:
 
 
 <div class="hbox output_area"><div class="prompt output_prompt">
-    Out[16]:</div>
+    Out[15]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 
 
@@ -4092,7 +4092,7 @@ In&nbsp;[16]:
 <p>This function takes a player, gets their adjusted average fantasy points for the season so far, then returns the average expected points of their next 5 games, adjusted for opponent and homefield advantage.</p>
 <p>To do that adjustment, we have a pair of functions, <code>adjusted_score</code> and <code>game_value</code>, each of which simply takes a game and returns its adjusted value.</p>
 <p>We run the <code>expected_points</code> function a couple of times at the end just to make sure it's sensible.</p>
-<p>In this case, you see that Mesut Özil is expected to score about 5 points per game over the next 5 games, Luis Suárez 8, and Yaya Touré about 6 and a half. I went and looked at the scores those players have been posting, and who their upcoming opponents are, and those results seem reasonable given that information.</p>
+<p>In this case, you see that Jordan Mutch is expected to score about 3 and a half points per game over the next 5 games, Luis Suárez 8, and the model expects that Yaya Sanogo is worth negative points. I went and looked at the scores those players have been posting, and who their upcoming opponents are, and those results seem reasonable given that information.</p>
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Given the constraints:</p>
@@ -4176,7 +4176,7 @@ bin gk1, mf2, d3, f4, d5, …; /* all variables are binary */
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[17]:
+In&nbsp;[16]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">objective_function</span><span class="p">():</span>
@@ -4198,7 +4198,7 @@ In&nbsp;[17]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[18]:
+In&nbsp;[17]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">cost_constraint</span><span class="p">(</span><span class="n">max_price</span><span class="p">):</span>
@@ -4218,7 +4218,7 @@ In&nbsp;[18]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[19]:
+In&nbsp;[18]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">position_constraints</span><span class="p">():</span>
@@ -4255,7 +4255,7 @@ In&nbsp;[19]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[20]:
+In&nbsp;[19]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="c">#create a buffer to hold all the constraints</span>
@@ -4280,7 +4280,7 @@ In&nbsp;[20]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[24]:
+In&nbsp;[20]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">subprocess</span><span class="o">,</span> <span class="nn">re</span>
@@ -4292,7 +4292,7 @@ In&nbsp;[24]:
     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Unable to find player&quot;</span><span class="p">)</span>
     
 <span class="k">def</span> <span class="nf">return_team</span><span class="p">(</span><span class="n">lp</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;run lp_solve ands return a list of player objects&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;run lp_solve and return a list of player objects&quot;&quot;&quot;</span>
     <span class="n">cmd</span> <span class="o">=</span> <span class="s">&quot;echo &#39;</span><span class="si">%s</span><span class="s">&#39; | lp_solve&quot;</span> <span class="o">%</span> <span class="n">lp</span>
     <span class="n">val</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
     <span class="n">get_id</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">l</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">&quot;^\w+?(\d+)&quot;</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
@@ -4310,7 +4310,7 @@ In&nbsp;[24]:
 
 
 <div class="hbox output_area"><div class="prompt output_prompt">
-    Out[24]:</div>
+    Out[20]:</div>
 <div class="box-flex1 output_subarea output_pyout">
 
 
