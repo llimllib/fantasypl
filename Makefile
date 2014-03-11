@@ -1,4 +1,4 @@
-notebook:
+notebook: requirements
 	ipython notebook --pylab --notebook-dir=.
 
 slides:
@@ -17,4 +17,7 @@ watchweb:
 serveslides:
 	ipython nbconvert --to slides Fantasy\ Football\ Presentation.ipynb --post serve
 
-.PHONY: notebook
+requirements:
+	pip install requests numpy ipython
+
+.PHONY: notebook slides html watch watchweb serveslides
