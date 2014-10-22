@@ -3,7 +3,7 @@ import requests, cPickle, shutil, time
 all = {}
 errorout = open("errors.log", "w")
 
-for i in range(600):
+for i in range(700):
     playerurl = "http://fantasy.premierleague.com/web/api/elements/%s/"
     r = requests.get(playerurl % i)
 
